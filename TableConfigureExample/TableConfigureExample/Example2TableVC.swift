@@ -50,7 +50,7 @@ class Example2TableVC: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Ex2Cell", for: indexPath)
         
         // Set different UIListContentConfiguration for odd/even cell
-        var content = indexPath.row % 2 == 0 ? contents[0] : contents[1]
+        var content = contents[indexPath.row % 2]
         
         #if DEBUG
         print(content)
