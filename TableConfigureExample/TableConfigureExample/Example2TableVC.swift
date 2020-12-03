@@ -2,9 +2,27 @@ import UIKit
 
 // Table view controller for Example2 scene
 class Example2TableVC: UITableViewController {
-    private lazy var contents: [UIListContentConfiguration] = [
-        .valueCell(),
-        .subtitleCell()
+    private var contents: [UIListContentConfiguration] = [
+        {
+            var content: UIListContentConfiguration = .valueCell()
+            content.textProperties.font = .systemFont(ofSize: 20, weight: .heavy)
+            content.textProperties.color = .systemGreen
+            content.secondaryTextProperties.font = .monospacedSystemFont(ofSize: 16, weight: .light)
+            content.secondaryTextProperties.color = .systemOrange
+            content.imageProperties.tintColor = .systemPurple
+
+            return content
+        }(),
+        {
+            var content: UIListContentConfiguration = .subtitleCell()
+            content.textProperties.font = .systemFont(ofSize: 20, weight: .heavy)
+            content.textProperties.color = .systemBlue
+            content.secondaryTextProperties.font = .systemFont(ofSize: 16, weight: .light)
+            content.secondaryTextProperties.color = .systemTeal
+            content.imageProperties.tintColor = .systemRed
+
+            return content
+        }()
     ]
     
     private var items:[(product: String, description: String)] = [
@@ -20,32 +38,6 @@ class Example2TableVC: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        setContents()
-    }
-    
-    private func setContents() {
-        contents = []
-        contents.append({
-            var content: UIListContentConfiguration = .valueCell()
-            content.textProperties.font = .systemFont(ofSize: 20, weight: .heavy)
-            content.textProperties.color = .systemGreen
-            content.secondaryTextProperties.font = .monospacedSystemFont(ofSize: 16, weight: .light)
-            content.secondaryTextProperties.color = .systemOrange
-            content.imageProperties.tintColor = .systemPurple
-
-            return content
-        }())
-        contents.append({
-            var content: UIListContentConfiguration = .subtitleCell()
-            content.textProperties.font = .systemFont(ofSize: 20, weight: .heavy)
-            content.textProperties.color = .systemBlue
-            content.secondaryTextProperties.font = .systemFont(ofSize: 16, weight: .light)
-            content.secondaryTextProperties.color = .systemTeal
-            content.imageProperties.tintColor = .systemRed
-
-            return content
-        }())
     }
 
     // MARK: - Table view data source
